@@ -1,4 +1,14 @@
-<h1>New Article</h1>
+<%= form_tag do %>
+    <%= label_tag(:email, "Email") %>
+    <%= text_field_tag(:email) %>
+    <%= label_tag(:username, "Username") %>
+    <%= text_field_tag(:username) %>
+    <%= label_tag(:password, "password") %>
+    <%= text_field_tag(:password) %>
+    <%= submit_tag("Add new User") %>
+<% end %>
+
+<%# <h1>New Article</h1>
 
 <form action="/users" method="POST" accept-charset="UTF-8" data-turbo=false>
   <label for="email">Email:</label>
@@ -11,6 +21,6 @@
     type="hidden"
     name="authenticity_token"
     value="<%= form_authenticity_token %>"
-  >
-  <input type="submit" value="Submit">
-</form>
+<%#  >
+#  <input type="submit" value="Submit">
+# </form> %>
