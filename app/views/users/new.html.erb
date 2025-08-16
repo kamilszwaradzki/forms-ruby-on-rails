@@ -1,12 +1,33 @@
-<%= form_tag do %>
-    <%= label_tag(:email, "Email") %>
-    <%= text_field_tag(:email) %>
-    <%= label_tag(:username, "Username") %>
-    <%= text_field_tag(:username) %>
-    <%= label_tag(:password, "password") %>
-    <%= text_field_tag(:password) %>
-    <%= submit_tag("Add new User") %>
+<%= form_with model: @user do |form| %>
+  <div class="mb-3">
+    <%= form.label :email, class:"form-label" %><br>
+    <%= form.text_field :email, class:"form-control", placeholder: 'example@example.com' %>
+    <% @user.errors.full_messages_for(:email).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :username, class:"form-label", value:'Your user name here' %><br>
+    <%= form.text_field :username, class:"form-control" %><br>
+    <% @user.errors.full_messages_for(:username).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.label :password, class:"form-label" %><br>
+    <%= form.password_field :password, class:"form-control" %><br>
+    <% @user.errors.full_messages_for(:password).each do |message| %>
+      <div><%= message %></div>
+    <% end %>
+  </div>
+
+  <div class="mb-3">
+    <%= form.submit "Create user", class: "btn btn-primary" %>
+  </div>
 <% end %>
+
 
 <%# <h1>New Article</h1>
 
@@ -20,7 +41,7 @@
   <input
     type="hidden"
     name="authenticity_token"
-    value="<%= form_authenticity_token %>"
+    value="<%= form_authenticity_token %> <%# "
 <%#  >
 #  <input type="submit" value="Submit">
 # </form> %>
